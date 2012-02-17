@@ -1,1 +1,5 @@
 When add it sends message to all saying that someone has been added
+
+Change Log:
+	
+	2/17/2012 3:00 AM - config.yml and watchlist.yml are generated upon first use.
