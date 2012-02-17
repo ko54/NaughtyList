@@ -17,6 +17,10 @@ public class NaughtyListRemove implements CommandExecutor {
 	public NaughtyListRemove(NaughtyList plugin) {
 		this.plugin = plugin;
 	}
+	
+	public void removeFromList() {
+		
+	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -8,6 +8,7 @@ import gmail.MinecraftMondaysDev.NaughtyList.NaughtyList;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class NaughtyListAdd implements CommandExecutor {
 
@@ -16,6 +17,12 @@ public class NaughtyListAdd implements CommandExecutor {
 
 	public NaughtyListAdd(NaughtyList plugin) {
 		this.plugin = plugin;
+	}
+	
+	public void addToList(CommandSender sender, String[] args) {
+		if (args[0].equalsIgnoreCase("add")) {
+			
+		}
 	}
 
 	@Override

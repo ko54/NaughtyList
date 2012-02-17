@@ -16,6 +16,8 @@ public class NaughtyList extends JavaPlugin {
 
 	public final Logger logger = Logger.getLogger("Minecraft");
 	protected FileConfiguration config;
+	
+	//Configuration Variables
 
 	@Override
 	public void onEnable() {
@@ -50,6 +52,7 @@ public class NaughtyList extends JavaPlugin {
 			} catch (IOException ex) {
 				System.out.println("[NaughtyList] Failed to create file.");
 			}
+			
 		}
 		
 		//getCommand();
@@ -65,17 +68,10 @@ public class NaughtyList extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		saveConfig();
-		saveWatchList();
 
 		PluginDescriptionFile pdf = getDescription();
 		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion()
 				+ " has been disabled!");
-
-	}
-
-	public boolean saveWatchList() {
-
-		return true;
 
 	}
 
