@@ -3,6 +3,19 @@ main: gmail.MinecraftMondaysDev.NaughtyList.NaughtyList
 version: 0.0.01
 author: kpwn243
 commands:
-   nl:
-       description: Add/Remove or check to see if this player is on the naughty list
-       usage: /nl add|remove|check Player
+   nla:
+       description: Add Player to the naughty list
+       usage: /nla Player
+       permission: nl.add
+       permission-message: You don't have permission to use that command.
+   nlr:
+       description: Remove Player from the naughty list
+       usage: /nlr Player
+       permission: nl.remove
+       permission-message: You don't have permission to use that command.
+   nlc:
+       description: Check if a player is on the naughty list
+       usage: /nlc Player
+       permission: nl.check
+       permission-message: You don't have permission to use that command.
+   

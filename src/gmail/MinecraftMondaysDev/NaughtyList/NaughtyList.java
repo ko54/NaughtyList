@@ -2,12 +2,13 @@ package gmail.MinecraftMondaysDev.NaughtyList;
 
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListCmd;
+import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListAdd;
+import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListCheck;
+import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListRemove;
 
 public class NaughtyList extends JavaPlugin {
 
@@ -22,9 +23,11 @@ public class NaughtyList extends JavaPlugin {
 		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion() + " has been enabled!");
 		
 		//setup folders and files
-		//soon
+		//getConfig();
 		
-		getCommand("nl").setExecutor(new NaughtyListCmd(this));
+		getCommand("nla").setExecutor(new NaughtyListAdd(this));
+		getCommand("nlr").setExecutor(new NaughtyListRemove(this));
+		getCommand("nlc").setExecutor(new NaughtyListCheck(this));
 	}
 
 	@Override
