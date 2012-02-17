@@ -1,7 +1,7 @@
 name: NaughtyList
 main: gmail.MinecraftMondaysDev.NaughtyList.NaughtyList
 version: 0.0.01
-author: 
+authors: 
   - kpwn243
   - Favorlock
 commands:
