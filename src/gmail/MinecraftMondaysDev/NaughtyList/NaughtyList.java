@@ -1,9 +1,10 @@
 package gmail.MinecraftMondaysDev.NaughtyList;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Logger;
 
-import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,18 +14,43 @@ import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListRemove;
 
 public class NaughtyList extends JavaPlugin {
 
-	public String colorGold = ChatColor.GOLD.toString();
-	public String colorDarkRed = ChatColor.DARK_RED.toString();
 	public final Logger logger = Logger.getLogger("Minecraft");
+	protected FileConfiguration config;
 
 	@Override
 	public void onEnable() {
 		
 		//setup folders and files
 		//getConfig();
+		config = getConfig();
+		
+		if(!getDataFolder().exists()) {			
+			System.out.print("[NaughtyList] Config folder not found! Creating...");
+			getDataFolder().mkdir();
+		}
 		
 		File configFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
-		File watchlistFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
+		File watchListFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
+		
+		if(!configFile.exists()) {
+			System.out.print("[NaughtyList] Config File missing! Creating...");
+			
+			try {			
+				configFile.createNewFile();
+			} catch (IOException ex) {
+				System.out.println("[NaughtyList] Failed to create file.");
+			}
+		}
+		
+		if(!watchListFile.exists()) {
+			System.out.print("[NaughtyList] Watchlist File missing! Creating...");
+			
+			try {
+				watchListFile.createNewFile();
+			} catch (IOException ex) {
+				System.out.println("[NaughtyList] Failed to create file.");
+			}
+		}
 		
 		//getCommand();
 		
@@ -38,9 +64,19 @@ public class NaughtyList extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		saveConfig();
+		saveWatchList();
 
 		PluginDescriptionFile pdf = getDescription();
-		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion() + " has been disabled!");
+		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion()
+				+ " has been disabled!");
 
 	}
+
+	public boolean saveWatchList() {
+
+		return true;
+
+	}
+
 }
