@@ -1,5 +1,6 @@
 package gmail.MinecraftMondaysDev.NaughtyList;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
@@ -18,16 +19,21 @@ public class NaughtyList extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-
-		PluginDescriptionFile pdf = getDescription();
-		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion() + " has been enabled!");
 		
 		//setup folders and files
 		//getConfig();
 		
+		File configFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
+		File watchlistFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
+		
+		//getCommand();
+		
 		getCommand("nla").setExecutor(new NaughtyListAdd(this));
 		getCommand("nlr").setExecutor(new NaughtyListRemove(this));
 		getCommand("nlc").setExecutor(new NaughtyListCheck(this));
+		
+		PluginDescriptionFile pdf = getDescription();
+		this.logger.info(pdf.getName() + " Version: " + pdf.getVersion() + " has been enabled!");
 	}
 
 	@Override
