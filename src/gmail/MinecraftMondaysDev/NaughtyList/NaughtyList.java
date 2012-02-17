@@ -29,7 +29,7 @@ public class NaughtyList extends JavaPlugin {
 			getDataFolder().mkdir();
 		}
 		
-		File configFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
+		File configFile = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
 		File watchListFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
 		
 		if(!configFile.exists()) {
