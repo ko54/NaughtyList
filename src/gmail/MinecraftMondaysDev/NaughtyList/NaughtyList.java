@@ -14,6 +14,9 @@ import gmail.MinecraftMondaysDev.NaughtyList.commands.NaughtyListRemove;
 
 public class NaughtyList extends JavaPlugin {
 
+	public static String maindirectory = "plugins" + File.separator + "NaughtyList";
+	File nlConfig = new File(maindirectory + File.separator + "config.yml");
+	File nlWatchList = new File(maindirectory + File.separator + "watchlist.yml");
 	public final Logger logger = Logger.getLogger("Minecraft");
 	protected FileConfiguration config;
 	
@@ -24,31 +27,27 @@ public class NaughtyList extends JavaPlugin {
 		
 		//setup folders and files
 		//getConfig();
-		config = getConfig();
 		
 		if(!getDataFolder().exists()) {			
 			System.out.print("[NaughtyList] Config folder not found! Creating...");
 			getDataFolder().mkdir();
 		}
 		
-		File configFile = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
-		File watchListFile = new File(getDataFolder().getAbsolutePath() + File.separator + "watchlist.yml");
-		
-		if(!configFile.exists()) {
+		if(!nlConfig.exists()) {
 			System.out.print("[NaughtyList] Config File missing! Creating...");
 			
 			try {			
-				configFile.createNewFile();
+				nlConfig.createNewFile();
 			} catch (IOException ex) {
 				System.out.println("[NaughtyList] Failed to create file.");
 			}
 		}
 		
-		if(!watchListFile.exists()) {
+		if(!nlWatchList.exists()) {
 			System.out.print("[NaughtyList] Watchlist File missing! Creating...");
 			
 			try {
-				watchListFile.createNewFile();
+				nlWatchList.createNewFile();
 			} catch (IOException ex) {
 				System.out.println("[NaughtyList] Failed to create file.");
 			}
