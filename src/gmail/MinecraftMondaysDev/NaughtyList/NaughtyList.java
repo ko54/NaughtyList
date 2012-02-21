@@ -21,6 +21,7 @@ public class NaughtyList extends JavaPlugin {
 			+ "watchlist.yml");
 	public final Logger logger = Logger.getLogger("Minecraft");
 	protected FileConfiguration config;
+	private LoginNotifier listener = null;
 
 	// Configuration Variables
 
@@ -63,7 +64,9 @@ public class NaughtyList extends JavaPlugin {
 		getCommand("nla").setExecutor(new NaughtyListAdd(this));
 		getCommand("nlr").setExecutor(new NaughtyListRemove(this));
 		getCommand("nlc").setExecutor(new NaughtyListCheck(this));
-		getServer().getPluginManager().registerEvents(new LoginNotifier(this), this);
+		
+		listener = new LoginNotifier(this);
+		getServer().getPluginManager().registerEvents(listener, this);
 		
 
 		PluginDescriptionFile pdf = getDescription();
